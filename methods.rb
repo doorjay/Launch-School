@@ -100,3 +100,60 @@ end
 
 car('Toyota', 'Corolla') 
 
+#naming animals 
+
+def dog(name)
+  return name  
+end 
+
+def cat(name) 
+  return name 
+end 
+
+puts "the dog's name is #{dog('Spot')}." 
+puts "The cats name is #{cat('Ginger')}." 
+#just needed to add (name) to dog method and specify the name for the cat. 
+
+#Name not found 
+
+def assign_name(name = 'Bob')
+  name 
+end 
+
+puts assign_name('Kevin') == 'Kevin' 
+puts assign_name == 'Bob' 
+#This method is iven a defualt value but can accept others if given. 
+
+#Multiply the sum 
+
+def add(x, y)
+  x + y
+end 
+
+def multiply(x, y) 
+  x*y
+end 
+
+puts add(2, 2) == 4
+puts add(5, 4) == 9 
+puts multiply(add(2, 2) add(5, 4)) == 36 
+
+#Random scentence
+
+names = ['Dave', 'Sally', 'George', 'Jessica']
+activities = ['walking', 'running', 'cycling']
+
+def name(array)
+  array.sample 
+end 
+
+def activity(array) 
+  array.sample 
+end 
+
+def sentence(name, activity)
+  name + ' went ' + activity + ' today!'
+end 
+
+puts sentence(name(names), activity(activities))
+#The Sample method takes a random value from an array and returns it. 
