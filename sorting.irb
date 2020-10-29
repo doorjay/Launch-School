@@ -1,0 +1,20 @@
+[2, 5, 3, 4, 2].sort do |a, b| 
+  a <=> b 
+end 
+# => [1, 2, 3, 4, 5] 
+
+# the <=> method or space ship operator is used in the sort method in order to 
+# determine what objects are "greater" or "less than" to sort them in to some kind of order.
+# However, you can you the space ship operator outside of the sort method even within blocks. 
+
+
+['arc', 'bat', 'cape', 'ants', 'cap'].sort
+# => ['ants', 'arc', 'bats', 'cap', 'cape'] 
+
+# the sort method will evaluate strings within arrays but cannot sort string alone. 
+
+[['a', 'cat', 'b', 'c'], ['b', 2], ['a', 'car', 'd', 3], ['a', 'car', 'd']].sort
+# => [["a", "car", "d"], ["a", "car", "d", 3], ["a", "cat", "b", "c"], ["b", 2]] 
+
+# The sort method will sort nested arrays within arrays as if they were strings sarting with the first character
+

@@ -1,0 +1,112 @@
+#example 1
+
+[[1, 2], [3, 4]].each do |arr|
+  puts arr.first
+end
+# 1
+# 3
+# => [[1, 2], [3, 4]]
+
+# What's happening in this, seemingly simple, piece of code? Take it apart and
+# try to describe every interaction with precision.
+
+=begin 
+each is being called on the array with nested arrays in it. The each method will
+select the nested arrays and arr.first selects the first element in each of the nested 
+arrays to be printed to the screen using puts. Since the return value of puts is always nil,
+the eac hmethod will return the object it was called on at the end. 
+=end 
+
+#example 2
+
+[[1, 2], [3, 4]].map do |arr|
+  puts arr.first
+end
+
+=begin 
+This example is very similar to the previous example with one exception being that the
+map method is being called insted of each. This means that almost the same thing happens
+with one variation, map returns => [nil, nil]. This is because map performs a transformation
+based on the return value of the block so, in this case it returns nil for each element in 
+the first array. 
+=end 
+
+#example 3
+
+[[1, 2,],[3, 4]].map do |arr| 
+  puts arr.first 
+  arr.first 
+end 
+
+=begin 
+In this example the return value is => [1, 3] because map will use the return value of 
+the block to determine its return value. the last line in the block(i mean line 3) is 
+arr.first has been added to make the blocs return value the first value of each nested 
+array: 1, 3. Which is used by .map to make [1, 3] as the return value. 
+=end 
+
+#example 4
+
+my_arr = [[18, 7], [3, 12]].each do |arr| 
+  arr.each do |num| 
+    if num > 5 
+      puts num 
+    end 
+  end 
+end 
+
+=begin 
+the output of this block is 18 7 12 with a return value of => [[18, 7], [3, 12]]. 
+the important things to notice in this block is that each is called twice, once it
+is called and it itterates through the first layer of the array, the second time it 
+itterates through the nested arrays and puts the values that are greater than 5 within 
+the nested arrays. then each doesn't care about the block return value so its return is 
+just the value of my_arr. 
+=end 
+
+#example 5 
+
+[[1, 2], [3, 4]].map do |arr|
+  arr.map do |num| 
+    num * 2
+  end 
+end 
+
+=begin 
+the output is the newly transformed array, => [[2, 4], [6, 8]]. It is important to note
+that map is called twice here to get to the values in the nested arrays. Now that you have 
+access to the values you can add your function which in this case is num*2 which, because
+we are using the map method, will itterate through doubling every number transformatively. 
+The map method will then return the mutated array. 
+=end 
+
+#example 6 
+
+[{ a: 'ant', b: 'elephant'}, { c: 'cat'}].select do |hash| 
+  hash.all? do |key, value| 
+    value[0] == key.to_s 
+  end 
+end 
+# => [{ :c => "cat"}] 
+
+=begin 
+If there is any confusion as to why ONLY => [{ :c => "cat"}] it is because the all? method is 
+testing each hash to see if it fits the pattern given which, in this case, is if the first 
+letter of the value is the same as the letter that is the key. The first hash does not pass 
+at all because part of it is false but, the second hash pass and is then returned. (it is important
+to not that if nil or false is part of either hash, that hash would not pass.)
+=end 
+
+#example  10
+
+[[[1, 2], [3, 4]], [5, 6]].map do |arr| 
+  arr.map do |el| 
+    if el.to_s.size == 1
+      el + 1
+    else 
+      el.map do |n| 
+        n + 1 
+      end 
+    end 
+  end 
+end 
