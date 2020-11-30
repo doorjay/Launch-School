@@ -1,0 +1,122 @@
+#searching 101
+
+# write a program that solicits 6 numbers from the user, then prints a message that describes
+# whether or not the 6th number appears amongst the first 5 numbers. 
+
+arr = []
+
+puts "enter the first number"
+arr << Kernel.gets().chomp().to_i
+
+puts "enter the second number" 
+arr << Kernel.gets().chomp().to_i
+
+puts "enter the third number"
+arr << Kernel.gets().chomp().to_i 
+
+puts "enter the fourth number" 
+arr << Kernel.gets().chomp().to_i
+
+puts "enter the fifth number" 
+arr << Kernel.gets().chomp().to_i
+
+puts "enter the last number" 
+last_num = Kernel.gets().chomp().to_i 
+
+if arr.include? last_num 
+  puts "the number #{last_num} appears in #{arr}."
+else 
+  puts "the number #{last_num} does not appear in #{arr}." 
+end 
+
+#Arithmetic Integer 
+
+# write a program that prompts the user for two postitive integers, and then prints the results of the following 
+# operations on those two numbers: addition, subtraction, product, quotient, remainder, and power. Do not worry about validating. 
+
+first_num = 0
+second_num = 0
+
+
+puts "==> enter the first number: " 
+first_num = Kernel.gets().chomp().to_i 
+
+puts "==> enter the second number: " 
+second_num = Kernel.gets().chomp().to_i 
+
+puts "==> #{first_num} + #{second_num} = #{first_num + second_num}" 
+puts "==> #{first_num} - #{second_num} = #{first_num - second_num}"
+puts "==> #{first_num} * #{second_num} = #{first_num * second_num}"
+puts "==> #{first_num} / #{second_num} = #{first_num / second_num}"
+puts "==> #{first_num} % #{second_num} = #{first_num % second_num}"
+puts "==> #{first_num} ** #{second_num} = #{first_num ** second_num}" 
+
+#Write a program that will ask a user for an input of a word or multiple words and give back the number of characters. Spaces should not be counted as a character.
+puts "Please enter any number of words or characters."
+answer = gets.chomp 
+how_many_characters = answer.delete(' ').size 
+puts "the number of characters in #{answer} is #{how_many_characters}."
+
+# Create a method that takes two arguments, multiplies them together, and then returns the result. 
+
+def multiply(n1, n2)
+  n1 * n2
+end 
+
+#Squaring and argument
+# Using the multiply method above, write a method that computes the square of its argument.
+
+def square(n) 
+  multiply(n, n)
+end 
+
+# Write a function named xor that takes two arguments, and returns true if exactly one of its arguments is truthy
+# false otherwise. Note that we are looking for a boolean result instead of a truthy/falsy value as returned by || and &&. 
+
+def xor?(value1, value2)
+  return true if value1 && !value2 
+  return true if value2 && !value1 
+  false 
+end 
+
+# Write a method that returns an Array that contains every other element of an Array that is passed in as an argument.
+# The values in the returned list should be those values that are in the 1st, 3rd, 5th, and so on elements of the 
+# argument Array.
+
+def oddities(array) 
+  odd_elements = []
+  index = 0
+  while index < array.size
+    odd_elements << array[index] 
+    index += 2 
+  end 
+  odd_elements
+  
+end 
+
+# Write a method that returns true if the string passed as an argument is a palindrome, false otherwise.
+# For this exercise, case matters as does punctuation and spaces. 
+
+def palindrome?(string) 
+  string == string.reverse
+end 
+
+# Write another method  that returns true if the string passed as an argument is a palindrome, false otherwise. 
+# This time, however, your method should be case-insensitive, and it should ignore all non-alphanumeric characters.
+# If you wish, you may simplify things by calling the palindrome? method you wrote in the previous exercise.
+
+def palindrome?(string)
+  string == string.reverse
+end 
+
+def real_palindrome?(string) 
+  string.downcase.delete('^a-z0-9') 
+  palindrome?(string) 
+end 
+
+# Write a method that returns true if its integer argument is palindromic, false otherwise. A palindromic number reads
+# the same forwards and backwards. 
+
+def palendromic_number?(num)
+  palindrome?(num.to_s)
+end 
