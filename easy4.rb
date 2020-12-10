@@ -150,10 +150,10 @@ end
 # Write a method that takes an integer and converts it to a string representation (positive or negative) 
 
 def signed_integer_to_string(number)
-case number <=> 0
-when -1 then "-#{integer_to_string(-number)}"
-when +1 then "+#{integer_to_string(number)}"
-else         integer_to_string(number)
-end
+  case number <=> 0
+  when -1 then "-#{integer_to_string(-number)}"
+  when +1 then "+#{integer_to_string(number)}"
+  else         integer_to_string(number)
+  end
 end 
 
